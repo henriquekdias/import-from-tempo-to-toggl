@@ -1,1 +1,1 @@
-# import-from-tempo-to-toggl
+# Import from Tempo to Toggl
