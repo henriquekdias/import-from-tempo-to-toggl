@@ -14,7 +14,7 @@ There is two ways you can use to identify your Toggl account:
 ### Email and password
 
 To use email and password as authenticator, on toggluserinformation.json file:
-- usertoken as a empty string;
+- usertoken as a empty string
 - useremail the email you use to login into Toggl
 - userpassword the password you use to login into Toggl
 
@@ -31,7 +31,7 @@ Example:
 ### Token
 
 To use Toggl Token as authenticator, on toggluserinformation.json file:
-- usertoken as token string;
+- usertoken as token string
 - useremail as a empty string
 - userpassword as a empty string
 
