@@ -150,17 +150,26 @@ namespace ImportFromTempoToToggl.Core
 
         private void CreateTogglTimeEntries(List<Model.Toggl.TimeEntry> togglTimeEntries, Model.Toggl.UserInformation togglUserInformation)
         {
+            var user = togglUserInformation.Email;
+            if(string.IsNullOrEmpty(user))
+            {
+                user = togglUserInformation.Token;
+            }
+
             var w = new Watcher();
-            w.Start($"creating time entries on Toggl using {togglUserInformation.UserEmail}");
+            w.Start($"creating time entries on Toggl using {user}");
 
             if (togglUserInformation == null)
                 return;
 
-            if (string.IsNullOrEmpty(togglUserInformation.UserEmail))
-                return;
+            if(string.IsNullOrEmpty(togglUserInformation.Token))
+            {
+                if (string.IsNullOrEmpty(togglUserInformation.Email))
+                    return;
 
-            if (string.IsNullOrEmpty(togglUserInformation.UserPassword))
-                return;
+                if (string.IsNullOrEmpty(togglUserInformation.Password))
+                    return;
+            }
 
             if (!togglUserInformation.WorkSpaceId.HasValue)
                 return;

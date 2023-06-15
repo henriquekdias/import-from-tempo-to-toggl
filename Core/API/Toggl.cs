@@ -18,12 +18,29 @@ namespace ImportFromTempoToToggl.Core.API
             _client.BaseAddress = new Uri("https://api.track.toggl.com/api/v9/");
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _client.DefaultRequestHeaders.Authorization =
+
+            AuthenticationHeaderValue? auth = null;
+
+            if(!string.IsNullOrEmpty(togglUserInformation.Token))
+            {
+                auth =
                 new AuthenticationHeaderValue(
                     "Basic",
                     Convert.ToBase64String(
                         System.Text.Encoding.ASCII.GetBytes(
-                                   $"{togglUserInformation.UserEmail}:{togglUserInformation.UserPassword}")));
+                                   $"{togglUserInformation.Token}:api_token")));
+            }
+            else
+            {
+                auth =
+                new AuthenticationHeaderValue(
+                    "Basic",
+                    Convert.ToBase64String(
+                        System.Text.Encoding.ASCII.GetBytes(
+                                   $"{togglUserInformation.Email}:{togglUserInformation.Password}")));
+            }
+
+             _client.DefaultRequestHeaders.Authorization = auth;
 
         }
 

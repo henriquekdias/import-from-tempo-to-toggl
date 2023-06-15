@@ -4,11 +4,14 @@ namespace ImportFromTempoToToggl.Model.Toggl
 {
     internal class UserInformation
     {
+        [JsonPropertyName("usertoken")]
+        public string? Token { get; set; }
+
         [JsonPropertyName("useremail")]
-        public string UserEmail { get; set; }
+        public string? Email { get; set; }
 
         [JsonPropertyName("userpassword")]
-        public string UserPassword { get; set; }
+        public string? Password { get; set; }
 
         [JsonPropertyName("workspaceid")]
         public int? WorkSpaceId { get; set; }

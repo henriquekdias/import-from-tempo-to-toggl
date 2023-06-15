@@ -1,4 +1,5 @@
 {
+    "usertoken":"<token>",
     "useremail":"<string>",
     "userpassword":"<string>",
     "workspaceid":<int>
